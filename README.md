@@ -29,3 +29,12 @@ Database:
 See options in config to disable collection of system fonts.
 
 Due to limitations with how the script is ran, it does not list details about user installed fonts (~/Library/Fonts). Only those in /Library/Fonts/ and /System/Library/Fonts/ are listed.
+
+Configuration
+-------------
+
+By default the fonts module will collect information on all fonts.
+Setting FONTS_SYSTEM to FALSE will skip all system fonts in /System/Library/Fonts.
+```
+FONTS_SYSTEM=FALSE
+```

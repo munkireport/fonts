@@ -32,6 +32,9 @@ class Fonts_model extends \Model {
 		$this->rs['trademark'] = ''; $this->rt['trademark'] = 'TEXT';
 
 		$this->serial_number = $serial;
+		
+		// Add local config
+		configAppendFile(__DIR__ . '/config.php');
 	}
 	
 	// ------------------------------------------------------------------------
