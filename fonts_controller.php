@@ -67,4 +67,4 @@ class Fonts_controller extends Module_controller
         $obj->view('json', array('msg' => $fonts_tab));
      }
 		
-} // END class Usb_controller
+} // END class Font_controller

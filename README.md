@@ -3,7 +3,11 @@ Fonts module
 
 Lists data on fonts installed on the system. 
 
-Database:
+Due to limitations with how the script is ran, it does not list details about user installed fonts (~/Library/Fonts). Only those in /Library/Fonts/ are listed.
+
+
+Table Schema
+---
 * name - varchar(255) - name of the font file
 * enabled - int - 0/1 is the font file enabled
 * type_name - varchar(255) - typeface name
@@ -25,16 +29,3 @@ Database:
 * vendor - text - font vendor
 * designer - text - designer of the font
 * trademark - text - font trademark
-
-See options in config to disable collection of system fonts.
-
-Due to limitations with how the script is ran, it does not list details about user installed fonts (~/Library/Fonts). Only those in /Library/Fonts/ and /System/Library/Fonts/ are listed.
-
-Configuration
--------------
-
-By default the fonts module will collect information on all fonts.
-Setting FONTS_SYSTEM to FALSE will skip all system fonts in /System/Library/Fonts.
-```
-FONTS_SYSTEM=FALSE
-```
