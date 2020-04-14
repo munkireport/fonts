@@ -32,13 +32,9 @@ class Fonts_model extends \Model {
 		$this->rs['trademark'] = ''; $this->rt['trademark'] = 'TEXT';
 
 		$this->serial_number = $serial;
-		
-		// Add local config
-		configAppendFile(__DIR__ . '/config.php');
 	}
 	
 	// ------------------------------------------------------------------------
-
     
      /**
      * Get font names for widget
@@ -82,72 +78,42 @@ class Fonts_model extends \Model {
 		$parser = new CFPropertyList();
 		$parser->parse($plist, CFPropertyList::FORMAT_XML);
 		$myList = $parser->toArray();
-        		
-		$typeList = array(
-			'name' => '',
-			'type' => 'unknown',
-			'type_name' => '',
-			'family' => '',
-			'style' => '',
-			'unique_id' => '',
-			'version' => '',
-			'enabled' => 0, // True or False
-			'copy_protected' => 0, // True or False
-			'duplicate' => 0,
-			'embeddable' => 0,
-			'type_enabled' => 0,
-			'outline' => 0,
-			'valid' => 0,
-			'path' => '',
-			'vendor' => '',
-			'copyright' => '',
-			'description' => '',
-			'designer' => '',
-			'trademark' => ''
-		);
         
-		foreach ($myList as $device) {
+		foreach ($myList as $font) {
 			// Check if we have a name
-			if( ! array_key_exists("name", $device)){
+			if( ! array_key_exists("name", $font)){
 				continue;
 			}
-            
-			// Skip system fonts if value is TRUE
-			if (!conf('fonts_system')) {
-    			if (0 === strpos($device['path'], '/System/Library/Fonts/')){
-					continue;
-    			}
-			}
-            
+
             // Format font type
-			if (isset($device['type'])){
-			    $device['type'] = str_replace(array('opentype','truetype','postscript','bitmap'), array('OpenType','TrueType','PostScript','Bitmap'), $device['type']);
+			if (isset($font['type'])){
+			    $font['type'] = str_replace(array('opentype','truetype','postscript','bitmap'), array('OpenType','TrueType','PostScript','Bitmap'), $font['type']);
 			}
-            
+
 			// Format Unique ID
-			if (isset($device['unique_id'])){
-			    $device['unique_id'] = trim($device['unique_id'], '.');
+			if (isset($font['unique_id'])){
+			    $font['unique_id'] = trim($font['unique_id'], '.');
 			}
-            
+
 			// Format Typeface name
-			if (isset($device['type_name'])){
-			    $device['type_name'] = trim($device['type_name'], '.');
+			if (isset($font['type_name'])){
+			    $font['type_name'] = trim($font['type_name'], '.');
 			}
-            
+
 			// Format family
-			if (isset($device['family'])){
-			    $device['family'] = trim($device['family'], '.');
+			if (isset($font['family'])){
+			    $font['family'] = trim($font['family'], '.');
 			}
-            
-			foreach ($typeList as $key => $value) {
+
+			foreach ($this->rs as $key => $value) {
 				$this->rs[$key] = $value;
-				if(array_key_exists($key, $device))
+				if(array_key_exists($key, $font))
 				{
-					$this->rs[$key] = $device[$key];
+					$this->rs[$key] = $font[$key];
 				}
 			}
-			
-			// Save font
+
+			// Save the font
 			$this->id = '';
 			$this->save();
 		}

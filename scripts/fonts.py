@@ -9,7 +9,6 @@ import os
 import plistlib
 import sys
 
-
 def get_fonts():
     '''Uses system profiler to get fonts for this machine.'''
     cmd = ['/usr/sbin/system_profiler', 'SPFontsDataType', '-xml']
@@ -31,6 +30,11 @@ def flatten_get_fonts(array):
     out = []
     for obj in array:
         device = {'name': '', 'enabled': 0, 'type_enabled': 0, 'copy_protected': 0, 'duplicate': 0, 'embeddable': 0, 'outline': 0, 'valid': 0}
+
+        # Only process fonts in /Library/Fonts
+        if 'path' in obj and "/System/Library/" in obj['path']:
+            continue
+
         for item in obj:
             if item == '_items':
                 out = out + flatten_get_fonts(obj['_items'])
@@ -42,7 +46,7 @@ def flatten_get_fonts(array):
                 device['type'] = obj[item]
             elif item == 'enabled' and obj[item] == 'Yes':
                 device['enabled'] = 1
-                    
+
             # Process each typeface within font
             elif item == 'typefaces':
                 for font in obj['typefaces']:
@@ -84,7 +88,6 @@ def flatten_get_fonts(array):
 
         out.append(device)
     return out
-    
 
 def main():
     """Main"""
@@ -103,11 +106,10 @@ def main():
     result = dict()
     info = get_fonts()
     result = flatten_get_fonts(info)
-    
+
     # Write font results to cache
     output_plist = os.path.join(cachedir, 'fonts.plist')
     plistlib.writePlist(result, output_plist)
-
 
 if __name__ == "__main__":
     main()
