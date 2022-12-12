@@ -25,7 +25,7 @@ $(document).on('appUpdate', function(e, lang) {
 			});
 		}
 		else{
-			box.append('<span class="list-group-item">'+i18n.t('font.nofonts')+'</span>');
+			box.append('<span class="list-group-item">'+i18n.t('fonts.nofonts')+'</span>');
 		}
 	});
 });	
