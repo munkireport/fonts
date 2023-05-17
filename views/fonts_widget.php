@@ -1,10 +1,10 @@
 	<div class="col-lg-4 col-md-6">
-	<div class="panel panel-default" id="fonts-widget">
-		<div class="panel-heading" data-container="body" >
-			<h3 class="panel-title"><i class="fa fa-font"></i>
+	<div class="card" id="fonts-widget">
+		<div class="card-header" data-container="body" >
+			<i class="fa fa-font"></i>
 			    <span data-i18n="fonts.widgettitle"></span>
-			    <list-link data-url="/show/listing/fonts/fonts"></list-link>
-			</h3>
+			    <a href="/show/listing/fonts/fonts" class="pull-right"><i class="fa fa-list"></i></a>
+			
 		</div>
 		<div class="list-group scroll-box"></div>
 	</div><!-- /panel -->
