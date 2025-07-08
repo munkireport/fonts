@@ -8,25 +8,24 @@
  **/
 class Fonts_controller extends Module_controller
 {
-	
-	/*** Protect methods with auth! ****/
-	function __construct()
-	{
-		// Store module path
-		$this->module_path = dirname(__FILE__);
-	}
+    /*** Protect methods with auth! ****/
+    function __construct()
+    {
+        // Store module path
+        $this->module_path = dirname(__FILE__);
+    }
 
-	/**
-	 * Default method
-	 * @author tuxudo
-	 *
-	 **/
-	function index()
-	{
-		echo "You've loaded the fonts module!";
-	}
+    /**
+     * Default method
+     * @author tuxudo
+     *
+     **/
+    function index()
+    {
+        echo "You've loaded the fonts module!";
+    }
 
-	/**
+    /**
      * Get font names for widget
      *
      * @return void
@@ -44,8 +43,8 @@ class Fonts_controller extends Module_controller
         $fonts = new Fonts_model;
         $obj->view('json', array('msg' => $fonts->get_fonts()));
      }
-    
-	/**
+
+    /**
      * Retrieve data in json format
      *
      **/
@@ -66,5 +65,5 @@ class Fonts_controller extends Module_controller
 
         $obj->view('json', array('msg' => $fonts_tab));
      }
-		
-} // END class Font_controller
+
+} // END class Fonts_controller

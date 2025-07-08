@@ -100,7 +100,7 @@ class Fonts extends Migration
             $table->index('valid');
         });
     }
-    
+
     public function down()
     {
         $capsule = new Capsule();

@@ -9,13 +9,19 @@ import os
 import plistlib
 import sys
 
+from SystemConfiguration import SCDynamicStoreCopyConsoleUser
+
 def get_fonts():
     '''Uses system profiler to get fonts for this machine.'''
-    cmd = ['/usr/sbin/system_profiler', 'SPFontsDataType', '-xml']
+
+    username=current_user()
+
+    cmd = ['/bin/launchctl', 'asuser', get_uid(username), '/usr/bin/sudo', '-u', username, '/usr/sbin/system_profiler', 'SPFontsDataType', '-xml']
     proc = subprocess.Popen(cmd, shell=False, bufsize=-1,
-                            stdin=subprocess.PIPE,
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                                stdin=subprocess.PIPE,
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (output, unused_error) = proc.communicate()
+
     try:
         try:
             plist = plistlib.readPlistFromString(output)
@@ -91,6 +97,40 @@ def flatten_get_fonts(array):
 
         out.append(device)
     return out
+
+def current_user():
+
+    # local constants
+    username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]
+    username = [username,""][username in ["loginwindow", None, ""]]
+
+    # If we can't get the current user, get last console login
+    if username == "":
+        setutxent_wtmp = c.setutxent_wtmp
+        setutxent_wtmp.restype = None
+        getutxent_wtmp = c.getutxent_wtmp
+        getutxent_wtmp.restype = POINTER(utmpx)
+        endutxent_wtmp = c.setutxent_wtmp
+        endutxent_wtmp.restype = None
+        # initialize
+        setutxent_wtmp(0)
+        entry = getutxent_wtmp()
+        while entry:
+            e = entry.contents
+            entry = getutxent_wtmp()
+            if (e.ut_type == 7 and e.ut_line == "console" and e.ut_user != "root" and e.ut_user != ""):
+                endutxent_wtmp()
+                return e.ut_user
+    else:
+        return username
+
+def get_uid(username):
+    cmd = ['/usr/bin/id', '-u', username]
+    proc = subprocess.Popen(cmd, shell=False, bufsize=-1,
+                            stdin=subprocess.PIPE,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    (output, unused_error) = proc.communicate()
+    return output.decode("utf-8", errors="ignore").strip()
 
 def main():
     """Main"""
