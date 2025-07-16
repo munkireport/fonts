@@ -11,6 +11,34 @@ import sys
 
 from SystemConfiguration import SCDynamicStoreCopyConsoleUser
 
+from ctypes import (CDLL,
+                    Structure,
+                    POINTER,
+                    c_int64,
+                    c_int32,
+                    c_int16,
+                    c_char,
+                    c_uint32)
+from ctypes.util import find_library
+
+class timeval(Structure):
+    _fields_ = [
+                ("tv_sec",  c_int64),
+                ("tv_usec", c_int32),
+               ]
+
+class utmpx(Structure):
+    _fields_ = [
+                ("ut_user", c_char*256),
+                ("ut_id",   c_char*4),
+                ("ut_line", c_char*32),
+                ("ut_pid",  c_int32),
+                ("ut_type", c_int16),
+                ("ut_tv",   timeval),
+                ("ut_host", c_char*256),
+                ("ut_pad",  c_uint32*16),
+               ]
+
 def get_fonts():
     '''Uses system profiler to get fonts for this machine.'''
 
@@ -101,6 +129,7 @@ def flatten_get_fonts(array):
 def current_user():
 
     # local constants
+    c = CDLL(find_library("System"))
     username = (SCDynamicStoreCopyConsoleUser(None, None, None) or [None])[0]
     username = [username,""][username in ["loginwindow", None, ""]]
 
