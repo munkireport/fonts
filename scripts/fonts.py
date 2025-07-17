@@ -154,6 +154,11 @@ def current_user():
         return username
 
 def get_uid(username):
+
+    # Decode if username is bytes
+    if isinstance(username, bytes):
+        username = username.decode("utf-8", errors="ignore")
+
     cmd = ['/usr/bin/id', '-u', username]
     proc = subprocess.Popen(cmd, shell=False, bufsize=-1,
                             stdin=subprocess.PIPE,
