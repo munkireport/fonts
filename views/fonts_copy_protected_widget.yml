@@ -1,0 +1,15 @@
+type: button
+widget_id: fonts_copy_protected-widget
+api_url: /module/fonts/get_button_widget/copy_protected
+i18n_title: fonts.copy_protected_widget
+listing_link: /show/listing/fonts/fonts
+icon: fa-lock
+buttons:
+  - label: no
+    i18n_label: no
+    class: btn-success
+    search_component: copy_protected_no
+  - label: yes
+    i18n_label: yes
+    class: btn-danger
+    search_component: copy_protected_yes 

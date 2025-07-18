@@ -14,6 +14,15 @@
     "designer": "Designer",
     "clienttab": "Polices",
     "reporttitle": "Polices",
+    "report": {
+        "title": "Polices"
+    },
+    "type_enabled_widget": "Caractère Activé",
+    "valid_widget": "Validité des Polices",
+    "duplicate_widget": "Polices Dupliquées", 
+    "copy_protected_widget": "Protection contre Copie",
+    "vendor_widget": "Fournisseurs de Polices",
+    "type_widget": "Types de Polices",
     "duplicate": "Dupliquées",
     "copy_protected": "Protégée contre la copie",
     "enabled": "Police activée",

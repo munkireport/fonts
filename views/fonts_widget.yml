@@ -1,0 +1,8 @@
+type: scrollbox
+widget_id: fonts-scrollbox-widget
+api_url: /module/fonts/get_list/type_name
+i18n_title: fonts.widgettitle
+icon: fa-font
+listing_link: /show/listing/fonts/fonts
+search_key: label
+badge: count 

@@ -1,0 +1,15 @@
+type: button
+widget_id: fonts_valid-widget
+api_url: /module/fonts/get_button_widget/valid
+i18n_title: fonts.valid_widget
+listing_link: /show/listing/fonts/fonts
+icon: fa-check-circle
+buttons:
+  - label: no
+    i18n_label: no
+    class: btn-danger
+    search_component: valid_no
+  - label: yes
+    i18n_label: yes
+    class: btn-success
+    search_component: valid_yes 
