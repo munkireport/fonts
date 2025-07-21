@@ -59,6 +59,52 @@ class Fonts_model extends \Model {
         return $out;
      }
 
+     /**
+     * Get font vendors for widget
+     *
+     **/
+     public function get_vendor()
+     {
+        $out = array();
+        $sql = "SELECT COUNT(CASE WHEN vendor <> '' AND vendor IS NOT NULL THEN 1 END) AS count, vendor 
+                FROM fonts
+                LEFT JOIN reportdata USING (serial_number)
+                ".get_machine_group_filter()."
+                GROUP BY vendor
+                ORDER BY count DESC";
+
+        foreach ($this->query($sql) as $obj) {
+            if ("$obj->count" !== "0") {
+                $obj->vendor = $obj->vendor ? $obj->vendor : 'Unknown';
+                $out[] = $obj;
+            }
+        }
+        return $out;
+     }
+
+     /**
+     * Get font types for widget
+     *
+     **/
+     public function get_type()
+     {
+        $out = array();
+        $sql = "SELECT COUNT(CASE WHEN type <> '' AND type IS NOT NULL THEN 1 END) AS count, type 
+                FROM fonts
+                LEFT JOIN reportdata USING (serial_number)
+                ".get_machine_group_filter()."
+                GROUP BY type
+                ORDER BY count DESC";
+
+        foreach ($this->query($sql) as $obj) {
+            if ("$obj->count" !== "0") {
+                $obj->type = $obj->type ? $obj->type : 'Unknown';
+                $out[] = $obj;
+            }
+        }
+        return $out;
+     }
+
     /**
      * Process data sent by postflight
      *

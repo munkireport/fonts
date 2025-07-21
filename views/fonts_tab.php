@@ -1,4 +1,15 @@
 <div id="fonts-tab"></div>
+
+<div id="lister" style="font-size: large; float: right;">
+    <a href="/show/listing/fonts/fonts" title="List">
+        <i class="btn btn-default tab-btn fa fa-list"></i>
+    </a>
+</div>
+<div id="report_btn" style="font-size: large; float: right;">
+    <a href="/show/report/fonts/fonts" title="Report">
+        <i class="btn btn-default tab-btn fa fa-th"></i>
+    </a>
+</div>
 <h2 data-i18n="fonts.clienttab"></h2>
 
 <div id="fonts-msg" data-i18n="listing.loading" class="col-lg-12 text-center"></div>

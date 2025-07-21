@@ -1,0 +1,41 @@
+i18n_title: fonts.clienttab
+js_link: module/fonts/js/fonts
+not_null_column: fonts.name
+table:
+  - column: machine.computer_name
+    i18n_header: listing.computername
+    formatter: clientDetail
+    tab_link: fonts-tab
+  - column: reportdata.serial_number
+    i18n_header: serial
+  - column: fonts.type_name
+    i18n_header: fonts.type_name
+    filter: type_name_filter
+  - column: fonts.type_enabled
+    i18n_header: fonts.type_enabled
+    formatter: binaryYesNo
+    filter: type_enabled_filter
+  - column: fonts.valid
+    i18n_header: fonts.valid
+    formatter: binaryYesNo
+    filter: valid_filter
+  - column: fonts.duplicate
+    i18n_header: fonts.duplicate
+    formatter: binaryYesNo
+    filter: duplicate_filter
+  - column: fonts.style
+    i18n_header: fonts.style
+  - column: fonts.family
+    i18n_header: fonts.family
+  - column: fonts.type
+    i18n_header: fonts.type
+    filter: type_filter
+  - column: fonts.copy_protected
+    i18n_header: fonts.copy_protected
+    formatter: binaryYesNo
+    filter: copy_protected_filter
+  - column: fonts.path
+    i18n_header: fonts.path
+  - column: fonts.vendor
+    i18n_header: fonts.vendor
+    filter: vendor_filter 
