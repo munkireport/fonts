@@ -14,9 +14,6 @@
   "designer": "Ontwerper",
   "clienttab": "Lettertypen",
   "reporttitle": "Lettertypen rapport",
-  "report": {
-    "title": "Lettertypen rapport"
-  },
   "type_enabled_widget": "Lettertype Ingeschakeld",
   "valid_widget": "Lettertype Geldigheid",
   "duplicate_widget": "Dubbele Lettertypes", 

@@ -14,9 +14,6 @@
     "designer": "Designer",
     "clienttab": "Polices",
     "reporttitle": "Polices",
-    "report": {
-        "title": "Polices"
-    },
     "type_enabled_widget": "Caractère Activé",
     "valid_widget": "Validité des Polices",
     "duplicate_widget": "Polices Dupliquées", 

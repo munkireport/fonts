@@ -10,7 +10,7 @@ listings:
 reports:
     fonts:
         view: fonts_report
-        i18n: fonts.report.title
+        i18n: fonts.reporttitle
 widgets:
     fonts:
         view: fonts_widget

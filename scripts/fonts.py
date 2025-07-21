@@ -171,8 +171,7 @@ def main():
 
     # Get results
     result = dict()
-    info = get_fonts()
-    result = flatten_get_fonts(info)
+    result = flatten_get_fonts(get_fonts())
 
     # Write font results to cache
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))

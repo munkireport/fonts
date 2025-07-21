@@ -14,9 +14,6 @@
     "designer": "Designer",
     "clienttab": "Fonts",
     "reporttitle": "Fonts Report",
-    "report": {
-        "title": "Fonts Report"
-    },
     "type_enabled_widget": "Typeface Enabled",
     "valid_widget": "Font Validity",
     "duplicate_widget": "Font Duplicates", 

@@ -5,11 +5,11 @@ i18n_title: fonts.copy_protected_widget
 listing_link: /show/listing/fonts/fonts
 icon: fa-lock
 buttons:
-  - label: no
-    i18n_label: no
-    class: btn-success
-    search_component: copy_protected_no
   - label: yes
     i18n_label: yes
     class: btn-danger
     search_component: copy_protected_yes 
+  - label: no
+    i18n_label: no
+    class: btn-success
+    search_component: copy_protected_no
