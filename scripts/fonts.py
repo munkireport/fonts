@@ -147,7 +147,7 @@ def current_user():
         while entry:
             e = entry.contents
             entry = getutxent_wtmp()
-            if (e.ut_type == 7 and e.ut_line == "console" and e.ut_user != "root" and e.ut_user != ""):
+            if (e.ut_type == 7 and e.ut_line == b"console" and e.ut_user != "root" and e.ut_user != "" and e.ut_user != b"root" and e.ut_user != b""):
                 endutxent_wtmp()
                 return e.ut_user
     else:
