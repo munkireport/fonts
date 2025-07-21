@@ -1,0 +1,28 @@
+client_tabs:
+    fonts-tab:
+        view: fonts_tab
+        i18n: fonts.clienttab
+        badge: fonts-cnt
+listings:
+    fonts:
+        view: fonts_listing
+        i18n: fonts.clienttab
+reports:
+    fonts:
+        view: fonts_report
+        i18n: fonts.reporttitle
+widgets:
+    fonts:
+        view: fonts_widget
+    fonts_type_enabled:
+        view: fonts_type_enabled_widget
+    fonts_valid:
+        view: fonts_valid_widget
+    fonts_duplicate:
+        view: fonts_duplicate_widget
+    fonts_copy_protected:
+        view: fonts_copy_protected_widget
+    fonts_vendor:
+        view: fonts_vendor_widget
+    fonts_type:
+        view: fonts_type_widget 

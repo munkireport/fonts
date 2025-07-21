@@ -1,12 +1,13 @@
 <div id="fonts-tab"></div>
+
 <h2 data-i18n="fonts.clienttab"></h2>
 
 <div id="fonts-msg" data-i18n="listing.loading" class="col-lg-12 text-center"></div>
 
 <script>
 $(document).on('appReady', function(){
-	$.getJSON(appUrl + '/module/fonts/get_data/' + serialNumber, function(data){
-        
+   $.getJSON(appUrl + '/module/fonts/get_data/' + serialNumber, function(data){
+
         // Check if we have data
         if( data.length == 0 ){
             $('#fonts-msg').text(i18n.t('no_data'));
@@ -24,46 +25,11 @@ $(document).on('appReady', function(){
                 for (var prop in d){
                     // Skip skipThese
                     if(skipThese.indexOf(prop) == -1){
-                        if(prop == 'enabled' && d[prop] == 1){
+                        if((prop == 'enabled' || prop == 'copy_protected' || prop == 'duplicate' || prop == 'embeddable' || prop == 'type_enabled' || prop == 'outline' || prop == 'valid') && d[prop] == 1){
                            rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
                         }
-                        else if(prop == 'enabled' && d[prop] == 0){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        } 
-                        else if(prop == 'copy_protected' && d[prop] == 1){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
-                        } 
-                        else if(prop == 'copy_protected' && d[prop] == 0){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        }
-                        else if(prop == 'duplicate' && d[prop] == 1){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
-                        } 
-                        else if(prop == 'duplicate' && d[prop] == 0){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        }
-                        else if(prop == 'embeddable' && d[prop] == 1){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
-                        } 
-                        else if(prop == 'embeddable' && d[prop] == 0){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        }
-                        else if(prop == 'type_enabled' && d[prop] == 1){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
-                        } 
-                        else if(prop == 'type_enabled' && d[prop] == 0){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        }
-                        else if(prop == 'outline' && d[prop] == 1){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
-                        } 
-                        else if(prop == 'outline' && d[prop] == 0){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
-                        }
-                        else if(prop == 'valid' && d[prop] == 1){
-                           rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('yes')+'</td></tr>';
-                        } 
-                        else if(prop == 'valid' && d[prop] == 0){
+                        else if((prop == 'enabled' || prop == 'copy_protected' || prop == 'duplicate' || prop == 'embeddable' || prop == 'type_enabled' || prop == 'outline' || prop == 'valid') && d[prop] == 0){
+
                            rows = rows + '<tr><th>'+i18n.t('fonts.'+prop)+'</th><td>'+i18n.t('no')+'</td></tr>';
                         }
                         else if(d[prop] == ""){
@@ -87,6 +53,6 @@ $(document).on('appReady', function(){
                                 .append(rows))))
             })
         }
-	});
+   });
 });
 </script>

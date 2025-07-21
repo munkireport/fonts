@@ -1,0 +1,15 @@
+type: button
+widget_id: fonts_duplicate-widget
+api_url: /module/fonts/get_button_widget/duplicate
+i18n_title: fonts.duplicate_widget
+listing_link: /show/listing/fonts/fonts
+icon: fa-copy
+buttons:
+  - label: yes
+    i18n_label: yes
+    class: btn-warning
+    search_component: duplicate_yes 
+  - label: no
+    i18n_label: no
+    class: btn-success
+    search_component: duplicate_no
